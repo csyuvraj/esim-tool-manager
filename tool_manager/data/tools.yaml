@@ -1,0 +1,7 @@
+ngspice:
+  display_name: Ngspice
+  binary_name: ngspice
+
+kicad:
+  display_name: KiCad
+  binary_name: kicad

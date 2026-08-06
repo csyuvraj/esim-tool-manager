@@ -1,5 +1,5 @@
 """
-eSim Tool Manager (ETM)
+eSim Tool Manager (ETM).
 """
 
 __version__ = "0.1.0"
