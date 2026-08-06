@@ -1,16 +1,12 @@
 """
-Main entry point for the eSim Tool Manager.
+Main entry point.
 """
 
-from tool_manager import __version__
+from tool_manager.cli import app
 
 
-def main() -> None:
-    """Start the application."""
-    print("=" * 40)
-    print("      eSim Tool Manager (ETM)")
-    print(f"           Version {__version__}")
-    print("=" * 40)
+def main():
+    app()
 
 
 if __name__ == "__main__":

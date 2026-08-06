@@ -1,5 +1,3 @@
-"""
-eSim Tool Manager (ETM)
-"""
+from .tool import Tool
 
-__version__ = "0.1.0"
+__all__ = ["Tool"]
