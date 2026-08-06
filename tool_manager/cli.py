@@ -4,20 +4,22 @@ Command Line Interface for ETM.
 
 import typer
 
+from tool_manager import __version__
+from tool_manager.doctor import run_doctor
+
 app = typer.Typer(
     name="etm",
-    help="eSim Tool Manager (ETM)",
+    help="eSim Tool Manager",
 )
 
 
 @app.command()
-def doctor():
-    """Check the system status."""
-    typer.echo("Running ETM Doctor...")
+def doctor() -> None:
+    """Run system diagnostics."""
+    run_doctor()
 
 
 @app.command()
-def version():
+def version() -> None:
     """Show ETM version."""
-    typer.echo("eSim Tool Manager v0.1.0")
-    
+    typer.echo(f"ETM v{__version__}")

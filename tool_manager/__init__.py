@@ -1,11 +1,5 @@
-from .registry import ToolRegistry
-from .result import InstallResult
-from .status import ToolStatus
-from .tool import Tool
+"""
+eSim Tool Manager (ETM)
+"""
 
-__all__ = [
-    "Tool",
-    "ToolStatus",
-    "InstallResult",
-    "ToolRegistry",
-]
+__version__ = "0.1.0"
