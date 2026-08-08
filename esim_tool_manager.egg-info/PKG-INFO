@@ -1,3 +1,21 @@
+Metadata-Version: 2.4
+Name: esim-tool-manager
+Version: 1.0.0
+Summary: A Linux-first CLI for managing eSim open-source EDA tools
+Author-email: Yuvraj Singh <singh94yuvraj@gmail.com>
+License: MIT
+Project-URL: Homepage, https://github.com/csyuvraj/esim-tool-manager
+Project-URL: Repository, https://github.com/csyuvraj/esim-tool-manager
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: typer>=0.9.0
+Requires-Dist: rich>=13.0.0
+Requires-Dist: pyyaml>=6.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0.0; extra == "dev"
+Dynamic: license-file
+
 # eSim Tool Manager (`etm`)
 
 A Linux-first CLI tool for managing Electronic Design Automation (EDA) dependencies for eSim.

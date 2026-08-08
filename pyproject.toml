@@ -4,17 +4,28 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "esim-tool-manager"
-version = "0.1.0"
-description = "A Linux-first CLI for managing eSim open-source tools"
+version = "1.0.0"
+description = "A Linux-first CLI for managing eSim open-source EDA tools"
+readme = "README.md"
+license = { text = "MIT" }
 authors = [
     { name = "Yuvraj Singh", email = "singh94yuvraj@gmail.com" }
 ]
 requires-python = ">=3.11"
 dependencies = [
-    "typer",
-    "rich",
-    "pyyaml"
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "pyyaml>=6.0"
 ]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/csyuvraj/esim-tool-manager"
+Repository = "https://github.com/csyuvraj/esim-tool-manager"
 
 [project.scripts]
 etm = "tool_manager.main:app"

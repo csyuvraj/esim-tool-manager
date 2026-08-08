@@ -1,0 +1,2 @@
+[console_scripts]
+etm = tool_manager.main:app
