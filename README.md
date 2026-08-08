@@ -131,6 +131,39 @@ $ etm logs -n 5
 
 ---
 
+
+---
+
+## Screenshots
+
+Below are visual previews of  in action. Replace the placeholder paths below with your actual uploaded image URLs once captured.
+
+<p align="center">
+  <img src="docs/images/etm-help.png" alt="etm --help CLI menu" width="800" /><br/>
+  <em><code>etm --help</code> — CLI options and available command routes</em>
+</p>
+
+<br/>
+
+<p align="center">
+  <img src="docs/images/etm-doctor.png" alt="etm doctor environment diagnostics" width="800" /><br/>
+  <em><code>etm doctor</code> — System platform and package manager environment checks</em>
+</p>
+
+<br/>
+
+<p align="center">
+  <img src="docs/images/etm-list.png" alt="etm list tool status table" width="800" /><br/>
+  <em><code>etm list</code> — Registered tools, installation status, and detected versions</em>
+</p>
+
+<br/>
+
+<p align="center">
+  <img src="docs/images/pytest-results.png" alt="pytest test suite execution" width="800" /><br/>
+  <em><code>pytest</code> — Full test suite passing with mocked subprocess execution</em>
+</p>
+
 ## Project Layout
 
 Here's how the codebase is structured and why each directory is set up the way it is:
