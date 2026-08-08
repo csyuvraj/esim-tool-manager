@@ -17,4 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
-etm = "tool_manager.cli:app"
+etm = "tool_manager.main:app"
+
+[tool.setuptools.packages.find]
+include = ["tool_manager*"]
