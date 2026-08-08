@@ -1,4 +1,3 @@
-```markdown
 # eSim Tool Manager (ETM)
 
 `etm` is a small CLI tool written in Python to manage external software dependencies for the eSim open-source EDA suite. It tracks required simulation binaries in a YAML configuration, runs basic health checks on your system, and delegates installation and update tasks directly to native Linux package managers.
@@ -58,21 +57,19 @@ You can clone the repository and install `etm` locally using Python's editable m
 ### Steps
 
 ```bash
-git clone [https://github.com/csyuvraj/esim-tool-manager.git](https://github.com/csyuvraj/esim-tool-manager.git)
+git clone https://github.com/csyuvraj/esim-tool-manager.git
 cd esim-tool-manager
 
 python3 -m venv .venv
 source .venv/bin/activate
 
 pip install -e ".[dev]"
-
 ```
 
 Once installed, check that the binary is available in your shell:
 
 ```bash
 etm --help
-
 ```
 
 ---
@@ -96,7 +93,6 @@ etm update
 
 # 5. Inspect runtime execution logs
 etm logs
-
 ```
 
 ---
@@ -131,7 +127,6 @@ $ etm logs -n 5
 2026-08-08 18:00:25 [INFO] Tool registry loaded 3 tools from tools.yaml.
 2026-08-08 18:00:40 [INFO] Executing install for tool: ngspice
 2026-08-08 18:00:43 [INFO] AptManager install completed successfully.
-
 ```
 
 ---
@@ -176,7 +171,6 @@ esim-tool-manager/
 │   └── version.py          # Version display logic
 ├── pyproject.toml          # Packaging metadata and dependency definitions
 └── requirements.txt        # Lockfile reference for environment setup
-
 ```
 
 ---
@@ -196,7 +190,7 @@ When setting up the project architecture, I made a few choices worth explaining 
 ## Supported Platforms
 
 | Platform | Backend Manager | Status | Notes |
-| --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- |
 | **Linux (Debian/Ubuntu)** | `AptManager` | Supported | Primary target environment. Runs `sudo apt`. |
 | **macOS** | `DummyPackageManager` | Safe Fallback | Commands run safely and report OS as unsupported. |
 | **Windows** | `DummyPackageManager` | Safe Fallback | Commands run safely and report OS as unsupported. |
@@ -212,7 +206,6 @@ You can run the full test suite locally with:
 
 ```bash
 python3 -m pytest tests/ -v
-
 ```
 
 CI is handled via GitHub Actions in `.github/workflows/ci.yml`. On every push and pull request, it sets up a fresh Python 3.11 environment on Ubuntu and runs the full test suite.
@@ -252,7 +245,7 @@ Take a look at `CONTRIBUTING.md` for a quick setup guide.
 
 ## Lessons Learned
 
-Building `etm` was a really practical project for working through standard Python packaging and CLI design pattern practices.
+Building `etm` was a really practical project for working through standard Python packaging and CLI design pattern practices. 
 
 When I started, I had most of the logic in a couple of loose scripts. Refactoring that into a clean, testable package taught me a lot about structuring Python projects properly. Moving configuration out of code and into `tools.yaml` made the system far more extensible, while setting up abstract package manager interfaces proved how useful design patterns can be when building CLI tools for multiple operating systems.
 
@@ -264,8 +257,6 @@ It was also my first time using Typer and Rich together on a real project. Once 
 
 **Yuvraj Singh**
 
-I built `etm` as a personal project while working with eSim to make dependency setup easier and learn more about Python packaging, design patterns, and CLI development.
+I built `etm` as a personal project while working with eSim to make dependency setup easier and learn more about Python packaging, design patterns, and CLI development. 
 
 If you're using eSim and find this tool helpful, or if you have ideas for improving it, feel free to open an issue or start a discussion on GitHub. Feedback and pull requests are always welcome!
-
-```
