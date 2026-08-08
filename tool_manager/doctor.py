@@ -10,6 +10,8 @@ import sys
 from rich.console import Console
 from rich.table import Table
 
+from tool_manager.models import ToolRegistry
+
 console = Console()
 
 
@@ -38,5 +40,13 @@ def run_doctor() -> None:
         internet = False
 
     table.add_row("Internet", check(internet))
+
+    registry = ToolRegistry()
+
+    for tool in registry.all():
+        table.add_row(
+            tool.display_name,
+            check(shutil.which(tool.binary_name) is not None),
+        )
 
     console.print(table)
