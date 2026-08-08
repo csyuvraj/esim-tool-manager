@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "esim-tool-manager"
+version = "0.1.0"
+description = "A Linux-first CLI for managing eSim open-source tools"
+authors = [
+    { name = "Yuvraj Singh", email = "singh94yuvraj@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "typer",
+    "rich",
+    "pyyaml"
+]
+
+[project.scripts]
+etm = "tool_manager.cli:app"
