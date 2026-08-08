@@ -1,52 +1,42 @@
-"""
-System health checks for ETM.
-"""
-
 import platform
-import shutil
 import socket
 import sys
+import subprocess
 
 from rich.console import Console
 from rich.table import Table
 
 from tool_manager.models import ToolRegistry
+from tool_manager.package_managers.factory import get_package_manager
 
 console = Console()
 
-
-def check(mark: bool) -> str:
-    return "✅ Yes" if mark else "❌ No"
-
+def get_ver(cmd):
+    try:
+        out = subprocess.run(cmd, capture_output=True, text=True).stdout.strip().split('\n')[0]
+        return f"[green]✓ {out}[/green]" if out else "[red]✗ Not found[/red]"
+    except Exception:
+        return "[red]✗ Not found[/red]"
 
 def run_doctor() -> None:
-    """Run system diagnostics."""
-
     table = Table(title="ETM Doctor")
-
     table.add_column("Component")
-    table.add_column("Status")
+    table.add_column("Version / Status")
 
-    table.add_row("Operating System", platform.system())
-    table.add_row("Python >= 3.9", check(sys.version_info >= (3, 9)))
-    table.add_row("Git", check(shutil.which("git") is not None))
-    table.add_row("Homebrew", check(shutil.which("brew") is not None))
-    table.add_row("pip3", check(shutil.which("pip3") is not None))
+    table.add_row("OS", platform.system())
+    table.add_row("Python", f"[green]✓ {sys.version.split()[0]}[/green]" if sys.version_info >= (3, 9) else "[red]✗ < 3.9[/red]")
+    table.add_row("Git", get_ver(["git", "--version"]))
+    table.add_row("APT", get_ver(["apt", "--version"]))
 
     try:
-        socket.create_connection(("google.com", 80), timeout=2)
-        internet = True
+        socket.create_connection(("1.1.1.1", 53), timeout=2)
+        table.add_row("Internet", "[green]✓ Connected[/green]")
     except OSError:
-        internet = False
+        table.add_row("Internet", "[red]✗ Offline[/red]")
 
-    table.add_row("Internet", check(internet))
-
-    registry = ToolRegistry()
-
-    for tool in registry.all():
-        table.add_row(
-            tool.display_name,
-            check(shutil.which(tool.binary_name) is not None),
-        )
+    pm = get_package_manager()
+    for tool in ToolRegistry().all():
+        ver = pm.get_installed_version(tool)
+        table.add_row(tool.display_name, f"[green]✓ {ver}[/green]" if ver else "[red]✗ Not installed[/red]")
 
     console.print(table)
